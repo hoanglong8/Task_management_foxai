@@ -1,0 +1,25 @@
+# ── Telegram Bot (existing) ─────────────────────────────────────────────────
+python-telegram-bot[job-queue]>=21.0
+python-dotenv==1.0.0
+openai>=1.0.0
+apscheduler==3.10.4
+pytz>=2024.1
+
+# ── FastAPI Backend ──────────────────────────────────────────────────────────
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0
+sqlalchemy>=2.0.0
+alembic>=1.13.0
+psycopg2-binary>=2.9.9
+
+# ── Authentication ───────────────────────────────────────────────────────────
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+
+# ── HTTP clients (platform adapters) ────────────────────────────────────────
+httpx>=0.26.0
+aiohttp>=3.9.0
+
+# ── Testing ──────────────────────────────────────────────────────────────────
+pytest>=8.0.0
+pytest-asyncio>=0.23.0

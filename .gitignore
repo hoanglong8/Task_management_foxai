@@ -1,0 +1,57 @@
+# Environment & secrets
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Database & data files (real data — never commit)
+tasks.json
+tasks.json.bak
+tasks.tmp
+*.db
+*.sqlite3
+
+# Logs
+*.log
+bot.log
+bot_error.log
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Docker volumes
+postgres_data/
+
+# Node (for frontend build tools if added later)
+node_modules/
+
+# Alembic auto-generated (keep migrations/ but ignore alembic version auto-gen temp)
+# Keep migrations/*.sql and alembic/versions/*.py

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOXAI Task Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen" class="screen">
+  <div class="login-box">
+    <h1>🦊 FOXAI Tasks</h1>
+    <p class="subtitle">Quản lý công việc nội bộ</p>
+    <input id="login-email" type="email" placeholder="Email" autocomplete="email">
+    <input id="login-password" type="password" placeholder="Mật khẩu" autocomplete="current-password">
+    <button id="login-btn" onclick="login()">Đăng nhập</button>
+    <p id="login-error" class="error hidden"></p>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app-screen" class="screen hidden">
+  <nav>
+    <span class="brand">🦊 FOXAI Tasks</span>
+    <div class="nav-links">
+      <button onclick="showTab('tasks')" class="nav-btn active" id="nav-tasks">📋 Tasks</button>
+      <button onclick="showTab('standup')" class="nav-btn" id="nav-standup">🌅 Standup</button>
+      <button onclick="showTab('weekly')" class="nav-btn" id="nav-weekly">📅 Tuần</button>
+    </div>
+    <div class="nav-right">
+      <span id="user-name"></span>
+      <button onclick="logout()" class="btn-secondary">Đăng xuất</button>
+    </div>
+  </nav>
+
+  <!-- TASKS TAB -->
+  <div id="tab-tasks" class="tab-content">
+    <div class="toolbar">
+      <div class="filters">
+        <select id="filter-status" onchange="loadTasks()">
+          <option value="">Tất cả</option>
+          <option value="pending">Chờ</option>
+          <option value="in_progress">Đang làm</option>
+          <option value="completed">Xong</option>
+        </select>
+        <input id="filter-search" type="text" placeholder="Tìm kiếm..." oninput="loadTasks()">
+      </div>
+      <button id="create-btn" class="btn-primary hidden" onclick="showCreateForm()">+ Tạo task</button>
+    </div>
+
+    <!-- Create Task Form -->
+    <div id="create-form" class="form-card hidden">
+      <h3>Tạo task mới</h3>
+      <input id="new-title" type="text" placeholder="Tên task *" required>
+      <input id="new-owner" type="text" placeholder="Người phụ trách *">
+      <input id="new-deadline" type="date" required>
+      <input id="new-project" type="text" placeholder="Dự án">
+      <textarea id="new-notes" placeholder="Ghi chú"></textarea>
+      <div class="form-actions">
+        <button class="btn-primary" onclick="createTask()">Tạo</button>
+        <button class="btn-secondary" onclick="hideCreateForm()">Hủy</button>
+      </div>
+    </div>
+
+    <div id="tasks-container">
+      <p class="loading">Đang tải...</p>
+    </div>
+  </div>
+
+  <!-- STANDUP TAB -->
+  <div id="tab-standup" class="tab-content hidden">
+    <div class="report-container">
+      <h2>🌅 Standup hôm nay</h2>
+      <pre id="standup-content" class="report-text">Đang tải...</pre>
+      <button class="btn-secondary" onclick="loadStandup()">🔄 Làm mới</button>
+    </div>
+  </div>
+
+  <!-- WEEKLY TAB -->
+  <div id="tab-weekly" class="tab-content hidden">
+    <div class="report-container">
+      <h2>📅 Kế hoạch tuần</h2>
+      <pre id="weekly-content" class="report-text">Đang tải...</pre>
+      <button class="btn-secondary" onclick="loadWeekly()">🔄 Làm mới</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
